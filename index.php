@@ -52,7 +52,7 @@ switch($routeok) {
     
 
     <!-- Contenu spécifique de chacune des pages -->
-    <?php require $toTemplate["template"] ?>
+    <?php require "templates/".$toTemplate["template"] ?>
 
 
     <div id="modContent"></div>
