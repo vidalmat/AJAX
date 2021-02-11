@@ -212,3 +212,13 @@ function sendViaAjax() {
     echo json_encode($labels);
     exit;
 }
+
+
+
+function showFormUser() {
+
+    return [
+        "template" => "insertuser.php"
+    ];
+
+}

@@ -24,6 +24,39 @@ function getRequest() {
 
 }
 
+var formulaire = document.getElementById("insertuser");
+formulaire.addEventListener("submit", function (event) {
+
+    event.preventDefault(); // arrête l'évènement 
+
+    console.log("Le formulaire a été soumi");
+    // 1. Effectuer une première vérification des données (NON SUFFISANTE)
+    let pseudo = document.getElementById("pseudo").value;
+    let email = document.getElementById("email").value;
+    let nom = document.getElementById("nom").value;
+    let prenom = document.getElementById("prenom").value;
+    let adresse = document.getElementById("adresse").value;
+    let cp = document.getElementById("cp").value;
+    let ville = "Avignon";
+
+    console.log(pseudo);
+    console.log(email);
+    console.log(nom);
+    console.log(prenom);
+    console.log(adresse);
+    console.log(cp);
+    console.log(ville);
+
+    let request = getRequest();
+
+    request.open("POST", "index.php?route=xhrinsertuser"); 
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("pseudo=" +pseudo+"&email="+email+"&nom="+nom+"&prenom="+prenom+"&adresse="+adresse+"&cp="+cp+"&ville="+ville);
+    // Sous la forme param=valeur&param2=valeur2...
+
+});
+
+
 // function changeContent(url, param, id_elem) {
     
     var elem = document.getElementById("modContent");
@@ -56,7 +89,8 @@ function getRequest() {
             elem2.innerHTML = html;
         }
     }
-    
+
+
 
     console.log(request);
 

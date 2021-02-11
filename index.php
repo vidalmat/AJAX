@@ -24,6 +24,8 @@ $routeok = (isset($_GET["route"]))? $_GET["route"] : "showformdisk";
 switch($routeok) {
     case "showformdisk" : $toTemplate = showFormDisque();
     break;
+    case "showformuser" : $toTemplate = showFormUser();
+    break;
     case "ajoutdisque" : ajoutDisque();
     break;
     case "showmoddisque" : $toTemplate = showModDisque();
