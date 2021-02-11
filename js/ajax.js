@@ -56,6 +56,40 @@ formulaire.addEventListener("submit", function (event) {
 
 });
 
+//----------------------------------------------------------------------------------------
+var cpinput = document.getElementById("cp");
+cpinput.addEventListener("keyup", function (event) {
+
+    console.log(event.target.value);
+    if(event.target.value.length == 5) {
+
+        console.log("J'ai bien 5 caractères.");
+
+        let cp = event.target.value;
+        let request = getRequest();
+
+        // Procédure par étape 
+        //1. 
+        request.open("GET", "api.zippopotam.us/FR/" + cp);
+
+        //2. 
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        //3.
+        request.send();
+
+        request.onreadystatechange = function (event) {
+            if(request.onreadystate == 4 && request.status == 200) {
+                // Dans ce cas, on peut modifier le select
+            }
+        }
+    }
+
+});
+//----------------------------------------------------------------------------------------
+
+
+
 
 // function changeContent(url, param, id_elem) {
     
