@@ -37,7 +37,7 @@ formulaire.addEventListener("submit", function (event) {
     let prenom = document.getElementById("prenom").value;
     let adresse = document.getElementById("adresse").value;
     let cp = document.getElementById("cp").value;
-    let ville = "Avignon";
+    let ville = document.getElementById("ville").value;
 
     console.log(pseudo);
     console.log(email);
@@ -70,7 +70,7 @@ cpinput.addEventListener("keyup", function (event) {
 
         // Procédure par étape 
         //1. 
-        request.open("GET", "api.zippopotam.us/FR/" + cp);
+        request.open("GET", "https://api.zippopotam.us/FR/" + cp);  // Ne pas oublier "https://" sinon ça ne marchera pas 
 
         //2. 
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -79,8 +79,20 @@ cpinput.addEventListener("keyup", function (event) {
         request.send();
 
         request.onreadystatechange = function (event) {
-            if(request.onreadystate == 4 && request.status == 200) {
-                // Dans ce cas, on peut modifier le select
+            if(request.readyState == 4 && request.status == 200) {
+
+                // Dans ce cas, on peut modifier le select pour faire
+                // apparaître le nom des villes une fois le code postal tapé
+                let select = document.getElementById("ville");
+                let datas = JSON.parse(request.response);
+                console.log(datas);
+                let html = "";
+                for(let place of datas.places) {
+                    html += "<option value='" + place["place name"] + "'>" + place["place name"] + "</option>";
+                }
+                console.log(html);
+
+                select.innerHTML = html;
             }
         }
     }
