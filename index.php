@@ -28,6 +28,8 @@ switch($routeok) {
     break;
     case "ajoutdisque" : ajoutDisque();
     break;
+    case "xhrinsertuser" : xhrInsertUser();
+    break;
     case "showmoddisque" : $toTemplate = showModDisque();
     break;
     case "ajax" : sendViaAjax();

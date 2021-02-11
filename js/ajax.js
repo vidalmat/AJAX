@@ -49,7 +49,7 @@ formulaire.addEventListener("submit", function (event) {
 
     let request = getRequest();
 
-    request.open("POST", "index.php?route=xhrinsertuser"); 
+    request.open("POST", "index.php?route=xhrinsertuser"); // route differe pour éviter un amalgame avec le insertuser en php avec les classes 
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("pseudo=" +pseudo+"&email="+email+"&nom="+nom+"&prenom="+prenom+"&adresse="+adresse+"&cp="+cp+"&ville="+ville);
     // Sous la forme param=valeur&param2=valeur2...

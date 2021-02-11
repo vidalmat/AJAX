@@ -222,3 +222,10 @@ function showFormUser() {
     ];
 
 }
+
+
+function xhrInsertUser() {
+
+    echo "Enregistrement ok";
+    exit;
+}
